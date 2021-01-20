@@ -1,3 +1,20 @@
+// Functions in this Tree
+
+// insert() : To insert a new node
+// find() : To find a node is present or not
+// delete() : To delete a node
+// height() : TO find the height of the tree
+// min() : To find the minimum value in tree
+// equals() : To find whether two trees are equal or not
+// isBinarySearchTree() : To chek if given tree is BST or not
+// printNodesAtDistance() : To print node at a particular distance
+
+// Traversing in tree and printing values of each node :-
+// traverseInOrder() 
+// traversePreOrder()
+// traversePostOrder()
+
+
 public class MyTree {
     private class Node{
         private int value;
@@ -100,6 +117,54 @@ public class MyTree {
         System.out.println(root.value);
         traversePreOrder(root.leftChild);
         traversePreOrder(root.rightChild);
+    }
+
+    public void delete(int value){
+        delete(root, value);
+    }
+
+    private Node delete(Node node, int value){
+        if(node == null){
+            return null;
+        }
+
+        if(value < node.value){
+            node.leftChild = delete(node.leftChild, value);
+        } else if(value > node.value){
+            node.rightChild = delete(node.rightChild, value);
+        } else {
+            if(node.leftChild == null || node.rightChild == null){
+                Node temp = null;
+                temp = node.leftChild == null ? node.rightChild : node.leftChild;
+
+                if(temp == null){
+                    return null;
+                } else {
+                    return temp;
+                }
+            } else {
+                Node successor = getSuccessor(node);
+                node.value = successor.value;
+                node.rightChild = delete(node.rightChild, successor.value);
+                return node;
+            }
+        }
+
+        return node;
+    }
+
+    private Node getSuccessor(Node node){
+        if(node == null){
+            return null;
+        }
+
+        Node temp = node.rightChild;
+
+        while(temp.leftChild != null){
+            temp = temp.leftChild;
+        }
+
+        return temp;
     }
 
     public int height(){
