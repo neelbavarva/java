@@ -15,7 +15,7 @@
 // traversePostOrder()
 
 
-public class MyTree {
+public class MyBST {
     private class Node{
         private int value;
         private Node leftChild;
@@ -216,7 +216,7 @@ public class MyTree {
     //     return last.value;
     // }
 
-    public boolean equals(MyTree other){
+    public boolean equals(MyBST other){
         if(other == null){
             return false;
         }
