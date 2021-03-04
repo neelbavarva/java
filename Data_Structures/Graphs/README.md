@@ -1,4 +1,4 @@
-# Java is the Best
+## Time Complexity of Graphs
 
 <h4>Average case scenario</h4>
 <div align="center">
