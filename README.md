@@ -1,7 +1,7 @@
 # Java is the Best
 
 <div align="center">
-<img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/bigO.png">
+<img src="https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png">
 </div>
 
 <hr>
