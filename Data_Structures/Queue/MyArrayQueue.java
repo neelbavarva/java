@@ -1,3 +1,5 @@
+package Data_Structures.Queue;
+
 import java.io.*;
 import java.util.*;
 
@@ -11,20 +13,20 @@ public class MyArrayQueue {
         items = new int[capacity];
     }
 
-	public void enqueue(int item) {
-        if(count == items.length){
+    public void enqueue(int item) {
+        if (count == items.length) {
             throw new IllegalStateException();
         }
 
         items[rear] = item;
-        rear = (rear+1)%items.length;
+        rear = (rear + 1) % items.length;
         count++;
     }
 
     public int dequeue() {
         var item = items[front];
         items[front] = 0;
-        front = (front+1)%items.length;
+        front = (front + 1) % items.length;
         count--;
         return item;
     }

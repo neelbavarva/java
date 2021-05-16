@@ -1,9 +1,10 @@
+package Data_Structures.Arrays;
+
 // Rotating an Array 
 
 public class JuggleArray {
 
-    public static int gcd(int a, int b)
-    {
+    public static int gcd(int a, int b) {
         if (b == 0)
             return a;
         else
@@ -31,7 +32,4 @@ public class JuggleArray {
             arr[j] = temp;
         }
     }
-}   
-
-
-    
+}
