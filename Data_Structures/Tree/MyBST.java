@@ -1,3 +1,5 @@
+package Data_Structures.Tree;
+
 // Functions in this Tree
 
 // insert() : To insert a new node
@@ -14,44 +16,42 @@
 // traversePreOrder()
 // traversePostOrder()
 
-
 public class MyBST {
-    private class Node{
+    private class Node {
         private int value;
         private Node leftChild;
         private Node rightChild;
 
-        public Node(int value){
+        public Node(int value) {
             this.value = value;
         }
 
         @Override
-        public String toString(){
+        public String toString() {
             return "Node=" + value;
         }
     }
 
     private Node root;
 
-    public void insert(int value){
+    public void insert(int value) {
         var node = new Node(value);
 
-        if(root == null){
+        if (root == null) {
             root = node;
             return;
         }
 
         var current = root;
-        while(true){
-            if(value < current.value){
-                if(current.leftChild == null){
+        while (true) {
+            if (value < current.value) {
+                if (current.leftChild == null) {
                     current.leftChild = node;
                     break;
                 }
                 current = current.leftChild;
-            } 
-            else {
-                if(current.rightChild == null){
+            } else {
+                if (current.rightChild == null) {
                     current.rightChild = node;
                     break;
                 }
@@ -60,28 +60,26 @@ public class MyBST {
         }
     }
 
-    public boolean find(int value){
+    public boolean find(int value) {
         var current = root;
-        while(current != null){
-            if(value < current.value){
+        while (current != null) {
+            if (value < current.value) {
                 current = current.leftChild;
-            }
-            else if (value > current.value){
+            } else if (value > current.value) {
                 current = current.rightChild;
-            }
-            else {
+            } else {
                 return true;
             }
         }
-        return false; 
+        return false;
     }
 
-    public void traverseInOrder(){
+    public void traverseInOrder() {
         traverseInOrder(root);
     }
 
-    private void traverseInOrder(Node root){
-        if(root == null){
+    private void traverseInOrder(Node root) {
+        if (root == null) {
             return;
         }
 
@@ -90,12 +88,12 @@ public class MyBST {
         traverseInOrder(root.rightChild);
     }
 
-    public void traversePostOrder(){
+    public void traversePostOrder() {
         traversePostOrder(root);
     }
 
-    private void traversePostOrder(Node root){
-        if(root == null){
+    private void traversePostOrder(Node root) {
+        if (root == null) {
             return;
         }
 
@@ -104,13 +102,12 @@ public class MyBST {
         System.out.println(root.value);
     }
 
-
-    public void traversePreOrder(){
+    public void traversePreOrder() {
         traversePreOrder(root);
     }
 
-    private void traversePreOrder(Node root){
-        if(root == null){
+    private void traversePreOrder(Node root) {
+        if (root == null) {
             return;
         }
 
@@ -119,25 +116,25 @@ public class MyBST {
         traversePreOrder(root.rightChild);
     }
 
-    public void delete(int value){
+    public void delete(int value) {
         delete(root, value);
     }
 
-    private Node delete(Node node, int value){
-        if(node == null){
+    private Node delete(Node node, int value) {
+        if (node == null) {
             return null;
         }
 
-        if(value < node.value){
+        if (value < node.value) {
             node.leftChild = delete(node.leftChild, value);
-        } else if(value > node.value){
+        } else if (value > node.value) {
             node.rightChild = delete(node.rightChild, value);
         } else {
-            if(node.leftChild == null || node.rightChild == null){
+            if (node.leftChild == null || node.rightChild == null) {
                 Node temp = null;
                 temp = node.leftChild == null ? node.rightChild : node.leftChild;
 
-                if(temp == null){
+                if (temp == null) {
                     return null;
                 } else {
                     return temp;
@@ -153,102 +150,99 @@ public class MyBST {
         return node;
     }
 
-    private Node getSuccessor(Node node){
-        if(node == null){
+    private Node getSuccessor(Node node) {
+        if (node == null) {
             return null;
         }
 
         Node temp = node.rightChild;
 
-        while(temp.leftChild != null){
+        while (temp.leftChild != null) {
             temp = temp.leftChild;
         }
 
         return temp;
     }
 
-    public int height(){
+    public int height() {
         return height(root);
     }
 
-    private int height(Node root){
-        if(root == null){
+    private int height(Node root) {
+        if (root == null) {
             return -1;
         }
 
-        if(root.leftChild == null && root.rightChild == null){
+        if (root.leftChild == null && root.rightChild == null) {
             return 0;
         }
-        
+
         return 1 + Math.max(height(root.leftChild), height(root.rightChild));
     }
 
-    public int min(){
+    public int min() {
         return min(root);
     }
 
     // O(n)
-    private int min(Node root){
-        if(root.leftChild == null && root.rightChild == null){
+    private int min(Node root) {
+        if (root.leftChild == null && root.rightChild == null) {
             return root.value;
         }
 
         var left = min(root.leftChild);
         var right = min(root.rightChild);
-        
-        return Math.min(Math.min(left, right),root.value);
-    }
 
+        return Math.min(Math.min(left, right), root.value);
+    }
 
     // Min Value in Binary Search Tree O(log(n))
 
     // public int min(){
-    //     if(root == null){
-    //         throw new IllegalStateException();
-    //     }
-
-    //     var current = root;
-    //     var last = current;
-    //     while(current != null){
-    //         last = current;
-    //         current = current.leftChild;
-    //     }
-    //     return last.value;
+    // if(root == null){
+    // throw new IllegalStateException();
     // }
 
-    public boolean equals(MyBST other){
-        if(other == null){
+    // var current = root;
+    // var last = current;
+    // while(current != null){
+    // last = current;
+    // current = current.leftChild;
+    // }
+    // return last.value;
+    // }
+
+    public boolean equals(MyBST other) {
+        if (other == null) {
             return false;
         }
 
         return equals(root, other.root);
     }
 
-
-    private boolean equals(Node first, Node second){
-        if(first == null && second == null){
+    private boolean equals(Node first, Node second) {
+        if (first == null && second == null) {
             return true;
         }
 
-        if(first!=null && second!=null){
-            return first.value == second.value 
-                    && equals(first.leftChild, second.leftChild)
+        if (first != null && second != null) {
+            return first.value == second.value && equals(first.leftChild, second.leftChild)
                     && equals(first.rightChild, second.rightChild);
         }
 
         return false;
     }
 
-    public boolean isBinarySearchTree(){
+    public boolean isBinarySearchTree() {
         return isBinarySearchTree(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
 
-    private boolean isBinarySearchTree(Node root, int min, int max){
-        if(root == null){
+    private boolean isBinarySearchTree(Node root, int min, int max) {
+        if (root == null) {
             return true;
         }
 
-        if(root.value < min || root.value > max){
+        if (root.value < min || root.value > max) {
             return false;
         }
 
@@ -256,21 +250,21 @@ public class MyBST {
                 && isBinarySearchTree(root.rightChild, root.value + 1, max);
     }
 
-    public void printNodesAtDistance(int distance){
+    public void printNodesAtDistance(int distance) {
         printNodesAtDistance(root, distance);
     }
 
-    private void printNodesAtDistance(Node root, int distance){
-        if(root == null){
+    private void printNodesAtDistance(Node root, int distance) {
+        if (root == null) {
             return;
         }
-        if(distance == 0){
+        if (distance == 0) {
             System.out.println(root.value);
             return;
         }
 
-        printNodesAtDistance(root.leftChild, distance-1);
-        printNodesAtDistance(root.rightChild, distance-1);
+        printNodesAtDistance(root.leftChild, distance - 1);
+        printNodesAtDistance(root.rightChild, distance - 1);
     }
 
 }

@@ -1,3 +1,5 @@
+package Data_Structures.HashMap;
+
 import java.io.*;
 import java.util.*;
 
@@ -16,13 +18,13 @@ public class MyHashTable {
 
     public void put(int key, String value) {
         var index = hash(key);
-        if(entries[index] == null){
+        if (entries[index] == null) {
             entries[index] = new LinkedList<>();
         }
 
         var bucket = entries[index];
-        for(var entry: bucket){
-            if(entry.key == key){
+        for (var entry : bucket) {
+            if (entry.key == key) {
                 entry.value = value;
                 return;
             }
@@ -32,13 +34,13 @@ public class MyHashTable {
         entries[index].addLast(entry);
     }
 
-    public String get(int key){
+    public String get(int key) {
         var index = hash(key);
         var bucket = entries[index];
 
-        if(bucket != null){
-            for(var entry: bucket){
-                if(entry.key == key){
+        if (bucket != null) {
+            for (var entry : bucket) {
+                if (entry.key == key) {
                     return entry.value;
                 }
             }
@@ -46,14 +48,14 @@ public class MyHashTable {
         return null;
     }
 
-    public void remove(int key){
+    public void remove(int key) {
         var index = hash(key);
         var bucket = entries[index];
-        if(bucket == null){
+        if (bucket == null) {
             throw new IllegalStateException();
         }
-        for(var entry: bucket){
-            if(entry.key == key){
+        for (var entry : bucket) {
+            if (entry.key == key) {
                 bucket.remove(entry);
                 return;
             }
@@ -61,7 +63,7 @@ public class MyHashTable {
         throw new IllegalStateException();
     }
 
-    private int hash(int key){
-        return key%entries.length;
+    private int hash(int key) {
+        return key % entries.length;
     }
 }

@@ -1,7 +1,9 @@
+package Data_Structures.Graphs;
+
 import java.util.*;
 
 public class MyGraph {
-    private class Node{
+    private class Node {
         private String label;
 
         public Node(String label) {
@@ -9,28 +11,28 @@ public class MyGraph {
         }
 
         @Override
-        public String toString(){
+        public String toString() {
             return label;
         }
     }
 
     private Map<String, Node> nodes = new HashMap<>();
-    private Map<Node , List<Node>> adjacencyList = new HashMap<>();
+    private Map<Node, List<Node>> adjacencyList = new HashMap<>();
 
-    public void addNode(String label){
+    public void addNode(String label) {
         Node node = new Node(label);
         nodes.putIfAbsent(label, node);
         adjacencyList.putIfAbsent(node, new ArrayList<>());
     }
 
-    public void addEdge(String from, String to){
+    public void addEdge(String from, String to) {
         Node fromNode = nodes.get(from);
-        if(fromNode == null){
+        if (fromNode == null) {
             throw new IllegalArgumentException();
         }
 
         Node toNode = nodes.get(to);
-        if(toNode == null){
+        if (toNode == null) {
             throw new IllegalArgumentException();
         }
 
@@ -38,21 +40,21 @@ public class MyGraph {
     }
 
     public void print() {
-        for( var source : adjacencyList.keySet()){
+        for (var source : adjacencyList.keySet()) {
             var targets = adjacencyList.get(source);
-            if(!targets.isEmpty()){
+            if (!targets.isEmpty()) {
                 System.out.println(source + " is connected to " + targets);
             }
         }
     }
 
-    public void removeNode(String label){
+    public void removeNode(String label) {
         var node = nodes.get(label);
-        if(node == null){
+        if (node == null) {
             return;
         }
 
-        for(var n : adjacencyList.keySet()){
+        for (var n : adjacencyList.keySet()) {
             adjacencyList.get(n).remove(node);
         }
 
@@ -60,32 +62,32 @@ public class MyGraph {
         nodes.remove(node);
     }
 
-    public void removeEdge(String from, String to){
+    public void removeEdge(String from, String to) {
         var fromNode = nodes.get(from);
         var toNode = nodes.get(to);
 
-        if(fromNode == null || toNode == null){
+        if (fromNode == null || toNode == null) {
             return;
         }
 
         adjacencyList.get(fromNode).remove(toNode);
     }
 
-    public void traverseDepthFirst(String root){
+    public void traverseDepthFirst(String root) {
         var node = nodes.get(root);
-        if(node == null){
+        if (node == null) {
             return;
         }
 
         traverseDepthFirst(node, new HashSet<>());
     }
 
-    private void traverseDepthFirst(Node root, Set<Node> visited){
+    private void traverseDepthFirst(Node root, Set<Node> visited) {
         System.out.println(root);
         visited.add(root);
 
-        for(var node : adjacencyList.get(root)){
-            if(!visited.contains(node)){
+        for (var node : adjacencyList.get(root)) {
+            if (!visited.contains(node)) {
                 traverseDepthFirst(node, visited);
             }
         }
@@ -94,36 +96,36 @@ public class MyGraph {
     // DepthFirst traversal using iteration
 
     // public void traverseDepthFirst(String root){
-    //     var node = nodes.get(root);
-    //     if(node == null){
-    //         return;
-    //     }
-
-    //     Set<Node> visited = new HashSet<>();
-    //     Stack<Node> stack = new Stack<>();
-    //     stack.push(node);
-
-    //     while(!stack.isEmpty()){
-    //         var current = stack.pop();
-
-    //         if(visited.contains(current)){
-    //             continue;
-    //         }
-
-    //         System.out.println(current);
-    //         visited.add(current);
-
-    //         for(var neighbour : adjacencyList.get(current)){
-    //             if(!visited.contains(neighbour)){
-    //                 stack.push(neighbour);
-    //             }
-    //         }
-    //     }
+    // var node = nodes.get(root);
+    // if(node == null){
+    // return;
     // }
 
-    public void traverseBreadthFirst(String root){
+    // Set<Node> visited = new HashSet<>();
+    // Stack<Node> stack = new Stack<>();
+    // stack.push(node);
+
+    // while(!stack.isEmpty()){
+    // var current = stack.pop();
+
+    // if(visited.contains(current)){
+    // continue;
+    // }
+
+    // System.out.println(current);
+    // visited.add(current);
+
+    // for(var neighbour : adjacencyList.get(current)){
+    // if(!visited.contains(neighbour)){
+    // stack.push(neighbour);
+    // }
+    // }
+    // }
+    // }
+
+    public void traverseBreadthFirst(String root) {
         var node = nodes.get(root);
-        if(node == null){
+        if (node == null) {
             return;
         }
 
@@ -132,18 +134,18 @@ public class MyGraph {
         Queue<Node> queue = new ArrayDeque<>();
         queue.add(node);
 
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             var current = queue.remove();
 
-            if(visited.contains(current)){
+            if (visited.contains(current)) {
                 continue;
             }
 
             System.out.println(current);
             visited.add(current);
 
-            for(var neighbour : adjacencyList.get(current)){
-                if(!visited.contains(neighbour)){
+            for (var neighbour : adjacencyList.get(current)) {
+                if (!visited.contains(neighbour)) {
                     queue.add(neighbour);
                 }
             }
@@ -154,67 +156,67 @@ public class MyGraph {
         Stack<Node> stack = new Stack<>();
         Set<Node> visited = new HashSet<>();
 
-        for(var node : nodes.values()){
+        for (var node : nodes.values()) {
             topologicalSort(node, visited, stack);
         }
 
         List<String> sorted = new ArrayList<>();
 
-        while(!stack.empty()){
+        while (!stack.empty()) {
             sorted.add(stack.pop().label);
         }
 
         return sorted;
     }
-    
-    private void topologicalSort(Node node, Set<Node> visited, Stack<Node> stack){
-        if(visited.contains(node)){
+
+    private void topologicalSort(Node node, Set<Node> visited, Stack<Node> stack) {
+        if (visited.contains(node)) {
             return;
         }
 
         visited.add(node);
 
-        for(var neighbour : adjacencyList.get(node)){
+        for (var neighbour : adjacencyList.get(node)) {
             topologicalSort(neighbour, visited, stack);
         }
 
         stack.push(node);
     }
 
-    public boolean hasCycle(){
+    public boolean hasCycle() {
         Set<Node> all = new HashSet<>();
         all.addAll((nodes.values()));
 
         Set<Node> visiting = new HashSet<>();
         Set<Node> visited = new HashSet<>();
 
-        while(!all.isEmpty()){
+        while (!all.isEmpty()) {
             var current = all.toArray(new Node[0])[0];
-            if(hasCycle(current, all, visiting, visited)){
+            if (hasCycle(current, all, visiting, visited)) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean hasCycle(Node node, Set<Node> all, Set<Node> visiting, Set<Node> visited){
+    private boolean hasCycle(Node node, Set<Node> all, Set<Node> visiting, Set<Node> visited) {
         all.remove(node);
         visiting.add(node);
 
-        for(var neighbour : adjacencyList.get(node)){
-            if(visited.contains(neighbour)){
+        for (var neighbour : adjacencyList.get(node)) {
+            if (visited.contains(neighbour)) {
                 continue;
             }
 
-            if(visiting.contains(neighbour)){
+            if (visiting.contains(neighbour)) {
                 return true;
             }
 
             var result = hasCycle(neighbour, all, visiting, visited);
 
-            if(result){
+            if (result) {
                 return true;
-            } 
+            }
         }
 
         visiting.remove(node);

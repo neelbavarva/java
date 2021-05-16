@@ -1,3 +1,5 @@
+package Data_Structures.LinkedList;
+
 import java.io.*;
 import java.util.*;
 
