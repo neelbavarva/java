@@ -1,12 +1,12 @@
 import java.io.*;
 import java.util.*;
 
-public class MyLinkedList{
-    private class Node{
+public class MyLinkedList {
+    private class Node {
         private int value;
         private Node next;
 
-        public Node(int value){
+        public Node(int value) {
             this.value = value;
         }
     }
@@ -15,10 +15,10 @@ public class MyLinkedList{
     private Node last;
     private int size;
 
-    public void addLast(int item){
+    public void addLast(int item) {
         Node node = new Node(item);
 
-        if(first == null){
+        if (first == null) {
             first = node;
             last = node;
         } else {
@@ -27,13 +27,13 @@ public class MyLinkedList{
         }
 
         size++;
-        
+
     }
 
-    public void addFirst(int item){
+    public void addFirst(int item) {
         Node node = new Node(item);
 
-        if(first == null){
+        if (first == null) {
             first = last = node;
         } else {
             node.next = first;
@@ -41,30 +41,31 @@ public class MyLinkedList{
         }
 
         size++;
-    } 
+    }
 
-    public int indexOf(int item){
+    public int indexOf(int item) {
         int index = 0;
         Node current = first;
-        while(current != null){
-            if(current.value == item) return index;
+        while (current != null) {
+            if (current.value == item)
+                return index;
             current = current.next;
             index++;
         }
         return -1;
     }
 
-    public boolean contains(int item){
+    public boolean contains(int item) {
         return indexOf(item) != -1;
     }
 
     public void removeFirst() {
 
-        if(first == null){
+        if (first == null) {
             throw new NoSuchElementException();
-        } 
+        }
 
-        if(first == last){
+        if (first == last) {
             first = last = null;
         } else {
             Node second = first.next;
@@ -76,11 +77,11 @@ public class MyLinkedList{
     }
 
     public void removeLast() {
-        if(first == null){
+        if (first == null) {
             throw new NoSuchElementException();
         }
 
-        if(first == last){
+        if (first == last) {
             first = last = null;
         } else {
             var previous = getPrevious(last);
@@ -93,8 +94,8 @@ public class MyLinkedList{
 
     private Node getPrevious(Node node) {
         var current = first;
-        while(current != null){
-            if(current.next == node){
+        while (current != null) {
+            if (current.next == node) {
                 return current;
             }
             current = current.next;
@@ -102,23 +103,26 @@ public class MyLinkedList{
         return null;
     }
 
-    public int size(){
+    public int size() {
         return size;
     }
 
-    public int[] toArray(){
+    public int[] toArray() {
         int[] array = new int[size];
         Node current = first;
         int index = 0;
-        while(current != null){
+        while (current != null) {
             array[index++] = current.value;
             current = current.next;
         }
         return array;
     }
 
-    public void reverse(){
-        if(first == null) return;
+    // Question :
+    // https://practice.geeksforgeeks.org/problems/reverse-a-linked-list/1
+    public void reverse() {
+        if (first == null)
+            return;
 
         var previous = first;
         var current = first.next;
@@ -126,7 +130,7 @@ public class MyLinkedList{
         last = first;
         last.next = null;
 
-        while(current != null){
+        while (current != null) {
             var next = current.next;
             current.next = previous;
             previous = current;
@@ -136,26 +140,26 @@ public class MyLinkedList{
         first = previous;
     }
 
-    public int getKthFromTheEnd(int k){
-        if(first == null){
+    public int getKthFromTheEnd(int k) {
+        if (first == null) {
             throw new IllegalStateException();
         }
 
         var a = first;
         var b = first;
 
-        for(int i = 0; i < k-1; i++){
+        for (int i = 0; i < k - 1; i++) {
             b = b.next;
-            if(b == null){
+            if (b == null) {
                 throw new IllegalArgumentException();
             }
         }
 
-        while(b != last){
-            a=a.next;
-            b=b.next;
+        while (b != last) {
+            a = a.next;
+            b = b.next;
         }
 
         return a.value;
-    } 
+    }
 }
