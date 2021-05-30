@@ -72,6 +72,7 @@ public class MyLinkedList {
         } else {
             Node second = first.next;
             first.next = second;
+            // first.next = null;
             first = second;
         }
 
