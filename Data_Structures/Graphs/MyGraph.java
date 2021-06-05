@@ -191,7 +191,7 @@ public class MyGraph {
         Set<Node> visited = new HashSet<>();
 
         while (!all.isEmpty()) {
-            var current = all.toArray(new Node[0])[0];
+            var current = all.iterator().next();
             if (hasCycle(current, all, visiting, visited)) {
                 return true;
             }
