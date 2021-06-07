@@ -1,27 +1,47 @@
-## 1. Encapsulation
+## 1. Inheritance
 
-<img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/7.png" />
+<img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/10.png" />
 
 ```
+
 ------------Main.java------------
 
-Employee employee = new Employee();
-employee.baseSalary() = 50000;
-employee.hourlySalary() = 200;
+var control = new TextBox();
+control.disable();
+control.setText();
 
-int wage = employee.calculateWage(20);
-System.out.println(wage);
+------------UIControl.java------------
 
-------------Employee.java------------
-
-public class Employee{
-  public int baseSalary;
-  public int hourlyRate;
+public abstract class UIControl {
+  private boolean isEnabled = true;
   
-  public int calculateWage(int extraHours){
-    return baseSalary + (hourlyRate*extraHours);
+  public void enable() {
+    isEnabled = true;
+  }
+
+  public void disable() {
+    isEnabled = false;
+  }
+
+  public boolean isEnabled() {
+    return isEnabled;
   }
 }
+
+------------TextBox.java------------
+
+public class TextBox extends UIControl {
+  private String text = "";
+
+  public void setText(String text) {
+    this.text = text;
+  }
+
+  public void clear() {
+    text = "";
+  }
+}
+
 ```
 
 ## 2. Abstraction 
