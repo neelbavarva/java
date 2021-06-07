@@ -125,3 +125,41 @@ public class Employee{
   
 }
 ```
+
+
+## 6. Constructor Overloading
+Same as Method Overloading
+
+```
+------------Main.java------------
+
+// Employee employee = new Employee(50000, 20);
+Employee employee = new Employee(50000);
+
+// int wage = employee.calculateWage(20);
+int wage = employee.calculateWage();
+System.out.println(wage);
+
+------------Employee.java------------
+
+public class Employee{
+  public int baseSalary;
+  public int hourlyRate;
+  
+  // Constructor
+  public Employee(int baseSalary, int hourlyRate) {
+    this.baseSalary = baseSalary;
+    this.hourlyRate = hourlyRate;
+  }
+  
+  // Constructor Overloading
+  public Employee(int baseSalary) {
+    this.baseSalary = baseSalary;
+  }
+         -----OR-----
+  public Employee(int baseSalary) {
+    this(baseSalary, 0);
+  }
+  
+}
+```
