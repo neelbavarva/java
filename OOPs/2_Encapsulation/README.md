@@ -181,7 +181,7 @@ public class Employee{
   public int baseSalary;
   public int hourlyRate;
   
-  public static int numberOfEmployee;
+  public static int numberOfEmployee; // static Variables
   
   // Constructor
   public Employee(int baseSalary, int hourlyRate) {
