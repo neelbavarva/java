@@ -192,3 +192,5 @@ public class Employee{
   
 }
 ```
+
+Like, public int hourlyRate; public int baseSalary; are instance variable, they have instance of the class.
