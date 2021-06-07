@@ -24,9 +24,10 @@ public class Employee{
 }
 ```
 
-## 3. Memory Allocation
+## 3. Abstraction 
+(Example:- TV Remote)
 
-<img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/6.png" />
+<img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/8.png" />
 
 ```
 var textBox1 = new TextBox();
