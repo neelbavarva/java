@@ -33,16 +33,29 @@ public class Employee{
 
 <img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/9.png" />
 
-```
-var textBox1 = new TextBox();
-var textBox2 = new TextBox();
-textBox2.setText("Hello World");
-System.out.println(testBox1.text);
-```
 
-This will print "Hello World",
+Make sendHttpRequest, findIpAddress private cause they are of no meaning to a user.
+```
+------------Main.java------------
 
-• Java runtime will see "new TextBox()" and will align a TextBox() in Heap area <br/>
-• Now, both textBox1, textBox2 will be pushed in Stack area (both are referencing the same address) <br/>
-• As soon as the execution finishes, both textBox1, textBox2 will be removed from Stack area <br/>
-• Now, TextBox() is in Heap area and Java's garbage collector will remove this from memory.
+Browser browser = new Browser();
+browser.findIpAddress("127.0.0.1");
+
+------------Browser.java------------
+
+public class Browser {
+  public void navigate(String address) {
+    String ip = findIpAddress(address);
+    String html = sendHttpRequest(ip);
+    System.out.println(html);
+  }
+
+  private String sendHttpRequest(String ip) {
+    return "<html></html>";
+  }
+
+  private String findIpAddress(String address) {
+    return "127.0.0.1";
+  }
+}
+```
