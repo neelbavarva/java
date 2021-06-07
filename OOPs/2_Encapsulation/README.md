@@ -39,7 +39,7 @@ Make sendHttpRequest, findIpAddress private cause they are of no meaning to a us
 ------------Main.java------------
 
 Browser browser = new Browser();
-browser.findIpAddress("127.0.0.1");
+browser.navigate("127.0.0.1");
 
 ------------Browser.java------------
 
