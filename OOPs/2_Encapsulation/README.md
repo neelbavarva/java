@@ -163,3 +163,32 @@ public class Employee{
   
 }
 ```
+
+## 7. Static Variables
+Static variables defined as a class member can be accessed without object of that class. Static variable is initialized once and shared among different objects of the class. All the object of the class having static variable will have the same instance of static variable.
+
+```
+------------Main.java------------
+
+Employee employee = new Employee(50000, 20);
+System.out.println(Employee.numberOfEmployee);
+int wage = employee.calculateWage(20);
+System.out.println(wage);
+
+------------Employee.java------------
+
+public class Employee{
+  public int baseSalary;
+  public int hourlyRate;
+  
+  public static int numberOfEmployee;
+  
+  // Constructor
+  public Employee(int baseSalary, int hourlyRate) {
+    this.baseSalary = baseSalary;
+    this.hourlyRate = hourlyRate;
+    numberOfEmployee++;
+  }
+  
+}
+```
