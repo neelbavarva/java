@@ -24,10 +24,14 @@ public class Employee{
 }
 ```
 
-## 3. Abstraction 
+## 2. Abstraction 
 (Example:- TV Remote)
 
 <img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/8.png" />
+
+## 3. Coupling
+
+<img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/9.png" />
 
 ```
 var textBox1 = new TextBox();
