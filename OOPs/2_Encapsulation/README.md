@@ -87,4 +87,41 @@ public class Employee{
   }
 }
 ```
-Btw, new Employee() is also a constructor and Java runtime will take all default values for it.
+Btw, new Employee() is also a constructor and Java runtime will take all default values for it.4
+
+## 5. Method Overloading
+Same functions with same name but with different paramaters
+
+```
+------------Main.java------------
+
+Employee employee = new Employee(50000, 20);
+
+// int wage = employee.calculateWage(20);
+int wage = employee.calculateWage(); // When extra hour are not there
+System.out.println(wage);
+
+------------Employee.java------------
+
+public class Employee{
+  public int baseSalary;
+  public int hourlyRate;
+  
+  // Constructor
+  public Employee(int baseSalary, int hourlyRate) {
+    this.baseSalary = baseSalary;
+    this.hourlyRate = hourlyRate;
+  }
+  
+  
+  public int calculateWage(int extraHours){
+    return baseSalary + (hourlyRate*extraHours);
+  }
+  
+  // Method Overloading
+  public int calculateWage(){
+    return baseSalary + (hourlyRate);
+  }
+  
+}
+```
