@@ -1,28 +1,27 @@
-## 1. Classes and Objects
+## 1. Encapsulation
 
-<p align="center">
-  <img width="475" src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/4.png" />
-  <img width="475" src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/5.png" />
-</p>
-
-## 2. Creating Classes and Objects
-
-Similar way you create Node and all in Trees
+<img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/7.png" />
 
 ```
-public class TestBox {
-    public String text;
+------------Main.java------------
 
-    public void setText(String text) {
-        this.text = text;
-    }
+Employee employee = new Employee();
+employee.baseSalary() = 50000;
+employee.hourlySalary() = 200;
+
+int wage = employee.calculateWage(20);
+System.out.println(wage);
+
+------------Employee.java------------
+
+public class Employee{
+  public int baseSalary;
+  public int hourlyRate;
+  
+  public int calculateWage(int extraHours){
+    return baseSalary + (hourlyRate*extraHours);
+  }
 }
-
-------------Ans For Creating Objects------------
-
-TextBox textBox1 = new TextBox();
-textBox1.setText("Box 1");
-System.out.println(testBox1.text);
 ```
 
 ## 3. Memory Allocation
