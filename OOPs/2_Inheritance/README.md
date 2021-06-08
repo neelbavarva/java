@@ -230,3 +230,98 @@ public static void show(UIControl control){
   System.out.println(control);
 }
 ```
+
+
+## 6. Comparing Objects
+
+```
+------------Main.java------------
+
+var point1 = new Point(1, 2);
+var point2 = new Point(1, 2);
+System.out.println(point1.equals(point2));
+
+------------Point.java------------
+
+public class Point {
+  private int x;
+  private int y;
+
+  public Point(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+
+```
+
+Output = false <br/>
+Cause here we are checking the equality for reference of both Point objects. To overcome this we will Override equals method in our Point class.
+
+```
+------------Main.java------------
+
+var point1 = new Point(1, 2);
+var point2 = new Point(1, 2);
+System.out.println(point1.equals(point2));
+
+------------Point.java------------
+
+public class Point {
+  private int x;
+  private int y;
+
+  public Point(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+  
+    @Override
+  public boolean equals(Object obj) {
+    var other = (Point)obj;
+    return other.x == x && other.y == y;
+  }
+}
+
+```
+Output = true <br/>
+
+Now if we pass any other Object instead of Point it will throw an exception. So always check instanceof before comparing. Also, always Override hashCode() method when Overriding equals() method.
+
+```
+------------Main.java------------
+
+var point1 = new Point(1, 2);
+var point2 = new Point(1, 2);
+System.out.println(point1.equals(point2));
+
+------------Point.java------------
+
+public class Point {
+  private int x;
+  private int y;
+
+  public Point(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+
+    if (!(obj instanceof Point))
+      return false;
+
+    var other = (Point) obj;
+    return other.x == x && other.y == y;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(x, y);
+  }
+}
+
+```
