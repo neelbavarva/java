@@ -156,3 +156,11 @@ public class TextBox extends UIControl {
 }
 
 ```
+
+## 3. Access Modifiers
+
+Public - Accessable everywhere (even outside of the class).
+
+Private - Accessable only inside the class. Private members are not inherited by subclasses, (TextBox extends UIControl, so you can't access private members of UIControl in TextBox).
+
+Protected - Accessable everywhere in the same package.
