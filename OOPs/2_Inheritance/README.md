@@ -175,3 +175,58 @@ public String toString(){
   return text;
 }
 ```
+
+## 5. Upcasting and Downcasting
+
+<img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/11.png" />
+
+```
+------------Main.java------------
+
+public static void main(String[] args) {
+  var control = new UIControl(true);
+  var textBox = new TextBox();
+  show(textBox); --(1)
+}
+
+public static void show(UIControl control){  --(2)
+  System.out.println(control);
+}
+```
+
+Upcasting - We have passed textBox object at (1) but it will automatically get casted to UIControl (Object is casted to it's parent) 
+
+Output = "", because textBox is casted to UIControl in (2) but during runtime toString() method of TextBox gets executed.
+
+You will not be able to access the method of TextBox in the method after (2)
+
+To access the methods of TextBox after (2) prefix it with (TextBox),
+```
+------------Main.java------------
+
+public static void show(UIControl control){
+  var textBox = (TextBox)control;
+  textBox.setText("Hello World");
+  System.out.println(control);
+}
+```
+
+Output: "Hello World"
+
+So this was Downcasting
+
+Now, after all this, if e pass control object {show(control)} at (1) our program will crash during runtime, because every TextBox is a control object but not every control object is a TextBox.
+
+So, to prevent this
+
+```
+------------Main.java------------
+
+public static void show(UIControl control){
+  if(control instanceof TextBox){
+    var textBox = (TextBox)control;
+    textBox.setText("Hello World");
+  }
+  System.out.println(control);
+}
+```
