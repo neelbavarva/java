@@ -1,5 +1,5 @@
 ## 1. Inheritance
-("Is a" relationship)
+("Is a" relationship)<br/>
 Inheritance provides mechanism that allowes a class to inherit property of another class. When a Class extends another class it inherits all non-private members including fields and methods. Inheritance in Java can be best understood in terms of Parent and Child relationship, also known as Super class(Parent) and Sub class(child).
 
 <img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/10.png" />
