@@ -418,6 +418,6 @@ public final class CheckBox extends UIControl{
   }
 }
 
-public class MyCheckBoc extends CheckBox{} // this will give error
+public class MyCheckBoX extends CheckBox{} // this will give error
 ```
-Just like in Java, string class is declared final, so we cannot extend them. This is because string are immutable in java, when you use .upperCase() it will not change the original string but will return a new string of upper case.
+Just like in Java, string class is declared final, so we cannot extend them. This is because strings are immutable in java, when you use .upperCase() it will not change the original string but will return a new string of upper case.
