@@ -444,7 +444,7 @@ Nope, that feature doesn't exist in Java
 
 Here both classes (A & B) have same method sayHello(), now which method should C inherite? 
 
-Diamond problem,
+<h3>Diamond problem,</h3>
 
 <img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/17.png" />
 
