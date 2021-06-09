@@ -422,13 +422,16 @@ public class MyCheckBoX extends CheckBox{} // this will give error
 ```
 Just like in Java, string class is declared final, so we cannot extend them. This is because strings are immutable in java, when you use .upperCase() it will not change the original string but will return a new string of upper case.
 
-<h2>Too much of a good thing is bad thing</h2>
+<h2>-- Too much of a good thing is bad thing --</h2>
+
 <img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/13.png" />
 
 Let's suppose we have to make an app where student and teacher can sign in. So applying Inheritance we will came up with this structure.
+
 <img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/14.png" />
 
 But int this all classes are tightly coupled to each other. If we make any change in base class then we have to make all necessary changes to all other sub classes.
 
 So, more appropriate structure should be:-
+
 <img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/15.png" />
