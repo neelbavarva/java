@@ -325,3 +325,53 @@ public class Point {
 }
 
 ```
+
+## 7. Polymorphism
+
+<img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/12.png" />
+
+```
+------------Main.java------------
+UIControl[] controls = { new TextBox(), new CheckBox() };
+
+for(var control : controls){
+//  if control is TextBox
+//    renderTextBox
+//  else if it is a CheckBox
+//    renderCheckBox
+}
+
+```
+We will end up have many if-else statements.
+
+So, applying Polymorphism concept (render method is having many forms)
+
+```
+------------Main.java------------
+
+UIControl[] controls = { new TextBox(), new CheckBox() };
+
+for(var control : controls){
+  control.render();
+}
+
+------------UIControl.java------------
+
+public void render() {
+
+}
+
+------------TextBox.java------------
+
+@Override
+public void render() {
+  System.out.println("Render TextBox");
+}
+
+------------CheckBox.java------------
+
+@Override
+public void render() {
+  System.out.println("Render CheckBox");
+}
+```
