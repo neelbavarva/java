@@ -435,3 +435,17 @@ But int this all classes are tightly coupled to each other. If we make any chang
 So, more appropriate structure should be:-
 
 <img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/15.png" />
+
+## 10. Multiple Inheritance
+
+Nope, that feature doesn't exist in Java
+
+<img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/16.png" />
+
+Here both classes (A & B) have same method sayHello(), now which method should C inherite? 
+
+Diamond problem,
+
+<img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/17.png" />
+
+Now, every class directly or indirectly inherites Object class. Let's suppose if A here is Object class, then it qould naturally face the diamond problem.
