@@ -422,7 +422,7 @@ public class MyCheckBoX extends CheckBox{} // this will give error
 ```
 Just like in Java, string class is declared final, so we cannot extend them. This is because strings are immutable in java, when you use .upperCase() it will not change the original string but will return a new string of upper case.
 
-<h2>-- Too much of a good thing is bad thing --</h2>
+<div align="center"><h2>-- Too much of a good thing is bad thing --</h2></div>
 
 <img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/13.png" />
 
