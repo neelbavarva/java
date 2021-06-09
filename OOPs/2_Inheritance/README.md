@@ -405,3 +405,19 @@ public abstract class UIControl{
 So, if we comment out the render() method in TextBox it will show error cause we either have to make the TextBox abstract or make(uncomment) the render method which is abstract in base class.
 
 Remember, we cannot create object of abstract class.
+
+## 9. Final Classes and Methods
+
+Once a class is declared final we cannot extend it anymore.
+
+```
+public final class CheckBox extends UIControl{
+  @Override
+  public void render(){
+    System.out.println("Render CheckBox");
+  }
+}
+
+public class MyCheckBoc extends CheckBox{} // this will give error
+```
+Just like in Java, string class is declared final, so we cannot extend them. This is because string are immutable in java, when you use .upperCase() it will not change the original string but will return a new string of upper case.
