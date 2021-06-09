@@ -375,3 +375,33 @@ public void render() {
   System.out.println("Render CheckBox");
 }
 ```
+
+## 8. Abstract Classes and Methods
+
+In the previous part we left the render() method in UIControl empty, cause we really don't know what it will do (it's an abstract concept), cause it's used to make instance of other(TextBox & CheckBox) and render.
+
+```
+------------Main.java------------
+
+UIControl[] controls = { new TextBox(), new CheckBox() };
+
+for(var control : controls){
+  control.render();
+}
+
+------------UIControl.java------------
+
+public abstract class UIControl{
+  public abstract void render();
+}
+
+------------TextBox.java------------
+
+//  @Override
+//  public void render() {
+//    System.out.println("Render TextBox");
+//  }
+```
+So, if we comment out the render() method in TextBox it will show error cause we either have to make the TextBox abstract or make(uncomment) the render method which is abstract in base class.
+
+Remember, we cannot create object of abstract class.
