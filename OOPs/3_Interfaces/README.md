@@ -14,117 +14,41 @@ An interface is a type similar to a class but it only includes method declaratio
 If we change B it will also affect the changes in A. So, to minimize the effect of changes we put an interface between these two classes. Now if we make any changes in B, A will not be affected, as long as both of the class(A & B) follows our Interface.
 
 
-## 2. Constructor & Inheritance
+## • Tightly coupled code
 
 
 ```
 
-------------Main.java------------
+------------TaxCalculator.java------------
 
-var control = new TextBox();
-
-------------UIControl.java------------
-
-public abstract class UIControl {
-  private boolean isEnabled = true;
+public class TaxCalculator {
+  private double taxableIncome;
   
-  // ------- //
-  public UIControl() {
-    System.out.println("UIControl");
+  public TaxCalculator(double taxableIncome){  ---(1)
+    this.taxableIncome = taxableIncome;
   }
   
-  public void enable() {
-    isEnabled = true;
-  }
-
-  public void disable() {
-    isEnabled = false;
-  }
-
-  public boolean isEnabled() {
-    return isEnabled;
+  public double calculateTax() {
+    return taxableIncome * 0.3;  ---(2)
   }
 }
 
-------------TextBox.java------------
+------------TaxReport.java------------
 
-public class TextBox extends UIControl {
-  private String text = "";
+public class TaxReport {
+  private TaxCalculator calculator;
   
-   // ------- //
-   public TextBox() {
-     System.out.println("TextBox");
-   }
-
-  public void setText(String text) {
-    this.text = text;
+  public TaxReport() {
+    calculator = new TaxCalculator(100_000);
   }
-
-  public void clear() {
-    text = "";
+  
+  public void show() {
+    var tax = calculator.calculateTax();
+    System.out.println(tax);
   }
 }
-
 ```
-
-Output:- <br/>
-UIControl<br/>
-TextBox
-
-
-<h3>Call the constructor of the base class</h3>
-
-```
-
-------------Main.java------------
-
-var control = new TextBox();
-
-------------UIControl.java------------
-
-public abstract class UIControl {
-  private boolean isEnabled = true;
-  
-  // ------- //
-  public UIControl(boolean isEnabled) {
-    this.isEnabled = isEnabled;
-    System.out.println("UIControl");
-  }
-  
-  public void enable() {
-    isEnabled = true;
-  }
-
-  public void disable() {
-    isEnabled = false;
-  }
-
-  public boolean isEnabled() {
-    return isEnabled;
-  }
-}
-
-------------TextBox.java------------
-
-public class TextBox extends UIControl {
-  private String text = "";
-  
-   // ------- //
-   public TextBox() {
-     super(true); // calling the constructor of base class
-     System.out.println("TextBox");
-   }
-
-  public void setText(String text) {
-    this.text = text;
-  }
-
-  public void clear() {
-    text = "";
-  }
-}
-
-```
+Now, if we add one more paramater in (1) we need to make changes in our TextReport class, or if we change 0.3 to 0.5 in (2) we need to recompile both the classes again. So, here interfaces comes to rescue.
 
 ## 3. Access Modifiers
 
