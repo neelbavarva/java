@@ -13,47 +13,6 @@ An interface is a type similar to a class but it only includes method declaratio
 
 If we change B it will also affect the changes in A. So, to minimize the effect of changes we put an interface between these two classes. Now if we make any changes in B, A will not be affected, as long as both of the class(A & B) follows our Interface.
 
-```
-
-------------Main.java------------
-
-var control = new TextBox();
-control.disable();
-control.setText();
-
-------------UIControl.java------------
-
-public abstract class UIControl {
-  private boolean isEnabled = true;
-  
-  public void enable() {
-    isEnabled = true;
-  }
-
-  public void disable() {
-    isEnabled = false;
-  }
-
-  public boolean isEnabled() {
-    return isEnabled;
-  }
-}
-
-------------TextBox.java------------
-
-public class TextBox extends UIControl {
-  private String text = "";
-
-  public void setText(String text) {
-    this.text = text;
-  }
-
-  public void clear() {
-    text = "";
-  }
-}
-
-```
 
 ## 2. Constructor & Inheritance
 
