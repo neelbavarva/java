@@ -1,6 +1,18 @@
 ## 1. Interfaces
 <img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/18.png" />
 
+<img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/19.png" />
+
+Like, using abstraction and by applying private keyboard we can reduce the coupling between A & B, but thats not enough. So, using Interfaces we can completely de-couple the relationship between A & B.
+
+<img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/20.png" />
+
+An interface is a type similar to a class but it only includes method declaration, it has no code, it only defines the capabilities a class should have. (Restaurant cheif(John) example).
+
+<img src="https://github.com/neelbavarva/Java/blob/main/Z_Images/OOPs/21.png" />
+
+If we change B it will also affect the changes in A. So, to minimize the effect of changes we put an interface between these two classes. Now if we make any changes in B, A will not be affected, as long as both of the class(A & B) follows our Interface.
+
 ```
 
 ------------Main.java------------
