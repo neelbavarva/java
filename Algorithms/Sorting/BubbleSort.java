@@ -1,6 +1,6 @@
 package Algorithms.Sorting;
 
-public class Sorting {
+public class BubbleSort {
 
     static public void bubbleSort(int arr[]) {
         boolean isSorted;
