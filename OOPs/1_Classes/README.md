@@ -31,7 +31,7 @@ System.out.println(testBox1.text);
 
 ```
 var textBox1 = new TextBox();
-var textBox2 = new TextBox();
+var textBox2 = textBox1;
 textBox2.setText("Hello World");
 System.out.println(testBox1.text);
 ```
