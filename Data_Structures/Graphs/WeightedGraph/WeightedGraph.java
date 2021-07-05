@@ -73,6 +73,43 @@ public class WeightedGraph {
         }
     }
 
+    public boolean hasCycle() {
+        Set<Node> visited = new HashSet<>();
+
+        for (var node : nodes.values()) {
+            if (!visited.contains(node)) {
+                if (hasCycle(node, null, visited)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private boolean hasCycle(Node node, Node parent, Set<Node> visited) {
+        visited.add(node);
+
+        for (var edge : node.getEdges()) {
+            if (edge.to == parent) {
+                continue;
+            }
+
+            if (visited.contains(edge.to)) {
+                return true;
+            }
+
+            if (hasCycle(edge.to, node, visited)) {
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+
+    // DIJKSTRA'S Algorithm START
+
     private class NodeEntry {
         private Node node;
         private int priority;
@@ -188,4 +225,6 @@ public class WeightedGraph {
 
         return path;
     }
+
+    // DIJKSTRA'S Algorithm END
 }
