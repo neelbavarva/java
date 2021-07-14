@@ -1,4 +1,4 @@
-package Data_Structures.Tree;
+package Java.Data_Structures.Tree;
 
 public class MyAVLTree {
     private class AVLNode {

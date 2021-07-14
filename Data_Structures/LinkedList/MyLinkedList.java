@@ -1,4 +1,4 @@
-package Data_Structures.LinkedList;
+package Java.Data_Structures.LinkedList;
 
 import java.io.*;
 import java.util.*;

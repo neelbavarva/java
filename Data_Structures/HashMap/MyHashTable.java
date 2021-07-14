@@ -1,4 +1,4 @@
-package Data_Structures.HashMap;
+package Java.Data_Structures.HashMap;
 
 import java.io.*;
 import java.util.*;
