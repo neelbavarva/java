@@ -1,4 +1,4 @@
-package Data_Structures.Heap;
+package Java.Data_Structures.Heap;
 
 public class MyHeap {
     private int[] items = new int[10];

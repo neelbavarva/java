@@ -1,4 +1,4 @@
-package Data_Structures.Arrays;
+package Java.Data_Structures.Arrays;
 
 // Rotating an Array 
 

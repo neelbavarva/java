@@ -1,4 +1,4 @@
-package Algorithms.Sorting;
+package Java.Algorithms.Sorting;
 
 public class QuickSort {
     public void sort(int[] array) {

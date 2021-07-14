@@ -1,4 +1,4 @@
-package Data_Structures.Heap;
+package Java.Data_Structures.Heap;
 
 public class Heapify {
     public static void heapify(int[] array) {

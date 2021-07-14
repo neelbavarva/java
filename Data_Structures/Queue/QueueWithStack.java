@@ -1,4 +1,4 @@
-package Data_Structures.Queue;
+package Java.Data_Structures.Queue;
 
 import java.io.*;
 import java.util.*;

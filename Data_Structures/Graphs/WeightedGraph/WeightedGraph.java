@@ -1,4 +1,4 @@
-package Data_Structures.Graphs.WeightedGraph;
+package Java.Data_Structures.Graphs.WeightedGraph;
 
 import java.util.*;
 
