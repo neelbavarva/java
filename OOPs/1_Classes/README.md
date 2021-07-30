@@ -216,6 +216,8 @@ public class Employee{
 
 Static variables defined as a class member can be accessed without object of that class. Static variable is initialized once and shared among different objects of the class. All the object of the class having static variable will have the same instance of static variable.
 
+<a href="https://stackoverflow.com/questions/5126082/what-exactly-is-an-instance-in-java">Better understanding</a>
+
 ```
 ------------Main.java------------
 
