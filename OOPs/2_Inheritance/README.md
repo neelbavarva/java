@@ -376,6 +376,8 @@ public void render() {
 }
 ```
 
+Runtime and Compile Time Polymorphism <a href="https://www.geeksforgeeks.org/difference-between-compile-time-and-run-time-polymorphism-in-java/">GFG</a>
+
 ## 8. Abstract Classes and Methods
 
 In the previous part we left the render() method in UIControl empty, cause we really don't know what it will do (it's an abstract concept), cause it's used to make instance of other(TextBox & CheckBox) and render.
