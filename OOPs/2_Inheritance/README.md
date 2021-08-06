@@ -46,6 +46,10 @@ public class TextBox extends UIControl {
 
 ```
 
+<a href="https://www.javatpoint.com/inheritance-in-java">Types of Inheritance:</a>
+
+<img src="https://static.javatpoint.com/images/core/typesofinheritance.jpg" />
+
 ## 2. Constructor & Inheritance
 
 
