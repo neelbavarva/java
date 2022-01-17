@@ -2,7 +2,7 @@ package Java.Data_Structures.Graphs;
 
 import java.util.*;
 
-public class MyGraph {
+public class BasicGraph {
     private class Node {
         private String label;
 
@@ -92,36 +92,6 @@ public class MyGraph {
             }
         }
     }
-
-    // DepthFirst traversal using iteration
-
-    // public void traverseDepthFirst(String root){
-    // var node = nodes.get(root);
-    // if(node == null){
-    // return;
-    // }
-
-    // Set<Node> visited = new HashSet<>();
-    // Stack<Node> stack = new Stack<>();
-    // stack.push(node);
-
-    // while(!stack.isEmpty()){
-    // var current = stack.pop();
-
-    // if(visited.contains(current)){
-    // continue;
-    // }
-
-    // System.out.println(current);
-    // visited.add(current);
-
-    // for(var neighbour : adjacencyList.get(current)){
-    // if(!visited.contains(neighbour)){
-    // stack.push(neighbour);
-    // }
-    // }
-    // }
-    // }
 
     public void traverseBreadthFirst(String root) {
         var node = nodes.get(root);
