@@ -21,6 +21,8 @@ import java.util.*;
 
 public class Graph {
 
+    Scanner sc = new Scanner(System.in);
+
     private class Edge {
         private int from;
         private int to;
@@ -261,6 +263,57 @@ public class Graph {
         }
         printPath(distances.get(node).previous, distances);
         System.out.print(node + " ");
+    }
+
+    public Graph getMinimumSpanningTree() {
+        System.out.print("Calculate Using Prime's / Krushkal's Algorithm ? [P/K] ");
+        String input = sc.nextLine();
+
+        if (input.toUpperCase().equals("P")) {
+            return primesAlgorithm();
+        } else {
+            return krushkalsAlgorithm();
+        }
+    }
+
+    private Graph primesAlgorithm() {
+        Graph tree = new Graph();
+
+        PriorityQueue<Edge> queue = new PriorityQueue<>(Comparator.comparingInt(e -> e.weight));
+
+        for (int i = 0; i < nodes.size(); i++) {
+            queue.addAll(adj.get(nodes.get(i)));
+        }
+
+        while (tree.nodes.size() < nodes.size()) {
+
+            Edge minEdge = queue.remove();
+            int nextNode = minEdge.to;
+
+            if (tree.nodes.contains(nextNode)) {
+                continue;
+            }
+
+            tree.addNode(nextNode);
+
+            tree.addEdge(minEdge.from, minEdge.to, minEdge.weight);
+
+            List<Edge> edges = adj.get(nextNode);
+
+            for (int i = 0; i < edges.size(); i++) {
+                if (!tree.nodes.contains(edges.get(i).to)) {
+                    queue.add(edges.get(i));
+                }
+            }
+        }
+
+        return tree;
+    }
+
+    private Graph krushkalsAlgorithm() {
+        Graph tree = new Graph();
+
+        return tree;
     }
 
 }
