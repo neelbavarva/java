@@ -1,21 +1,3 @@
-// ******* Methods available in this Graph ******* //
-
-// ********* Basic ********** //
-
-// addNode    ->    Add a new Node
-// addEdge    ->    Add an edge between 2 nodes
-// dfs        ->    Depth First Search
-// bfs        ->    Breadth First Search
-// hasCycle   ->    To detect if Graph has a cycle
-
-// ******* Algorithms ******* //
-
-// getShortestDistance      -> Get the shortest Distance between 2 Nodes
-// getShortestPath          -> Get the shortest Path between 2 Nodes
-// getMinimumSpanningTree   -> Get the Minumum Spanning Tree (Using Prime's and Krushkal's Algorithm)
-
-// *********************************************** //
-
 import java.io.*;
 import java.util.*;
 
