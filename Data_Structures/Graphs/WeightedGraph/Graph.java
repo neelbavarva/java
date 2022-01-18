@@ -351,7 +351,7 @@ public class Graph {
             }
 
             e++;
-            union(parent, current.from, current.to);
+            union(parent, x, y);
             tree.addEdge(current.from, current.to, current.weight);
         }
 
