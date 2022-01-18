@@ -9,6 +9,7 @@
 | getShortestDistance | Get the shortest Distance between 2 Nodes using Dijkstra's Algorithm |
 | getShortestPath | Get the shortest Path between 2 Nodes using Dijkstra's Algorithm |
 | getMinimumSpanningTree | Get the Minumum Spanning Tree (Using Prime's and Krushkal's Algorithm) |
+| printAllShortestDistance | Get shortest distance from the source node to all other nodes using Bellman-Ford's Algorithm |
 
 #### DIJKSTRA's Algorithm
 
