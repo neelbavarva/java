@@ -17,15 +17,18 @@ public class Graph {
         }
     }
 
+    private int maxNode = 0;
+    private int totalEdges = 0;
     private List<Integer> nodes = new ArrayList<>();
+    private List<Edge> edgeList = new ArrayList<>();
     private Map<Integer, List<Edge>> adj = new HashMap<>();
 
     public void addNode(int data) {
         if (nodes.contains(data)) {
             return;
         }
-
         nodes.add(data);
+        maxNode = Math.max(maxNode, data);
         adj.putIfAbsent(data, new ArrayList<>());
     }
 
@@ -33,6 +36,10 @@ public class Graph {
         if (!(nodes.contains(from) && nodes.contains(to))) {
             return;
         }
+
+        totalEdges++;
+
+        edgeList.add(new Edge(from, to, weight));
 
         adj.get(from).add(new Edge(from, to, weight));
         adj.get(to).add(new Edge(to, from, weight));
@@ -46,6 +53,13 @@ public class Graph {
                 Edge current = edges.get(j);
                 System.out.println(current.from + " is connected to " + current.to + " with weight " + current.weight);
             }
+        }
+    }
+
+    public void printEdges() {
+        for (int i = 0; i < edgeList.size(); i++) {
+            System.out.println(edgeList.get(i).from + " is connected to " + edgeList.get(i).to + " with weight "
+                    + edgeList.get(i).weight);
         }
     }
 
@@ -263,13 +277,12 @@ public class Graph {
 
         PriorityQueue<Edge> queue = new PriorityQueue<>(Comparator.comparingInt(e -> e.weight));
 
-        for (int i = 0; i < nodes.size(); i++) {
-            queue.addAll(adj.get(nodes.get(i)));
-        }
+        queue.addAll(adj.get(nodes.get(0)));
 
-        while (tree.nodes.size() < nodes.size()) {
+        while (!queue.isEmpty() && tree.nodes.size() <= nodes.size()) {
 
             Edge minEdge = queue.remove();
+            System.out.println(minEdge.from + " " + minEdge.to);
             int nextNode = minEdge.to;
 
             if (tree.nodes.contains(nextNode)) {
@@ -292,8 +305,50 @@ public class Graph {
         return tree;
     }
 
+    private int find(int parent[], int i) {
+        if (parent[i] == -1) {
+            return i;
+        }
+        return find(parent, parent[i]);
+    }
+
+    private void union(int parent[], int x, int y) {
+        parent[x] = y;
+    }
+
     private Graph krushkalsAlgorithm() {
         Graph tree = new Graph();
+        int parent[] = new int[maxNode + 1];
+
+        Arrays.fill(parent, -1);
+
+        PriorityQueue<Edge> queue = new PriorityQueue<>(Comparator.comparingInt(e -> e.weight));
+
+        for (int i = 0; i < edgeList.size(); i++) {
+            queue.add(edgeList.get(i));
+        }
+
+        for (int i = 0; i < nodes.size(); i++) {
+            tree.addNode(nodes.get(i));
+        }
+
+        int e = 0;
+
+        while (!queue.isEmpty() && e < nodes.size() - 1) {
+
+            Edge current = queue.poll();
+
+            int x = find(parent, current.from);
+            int y = find(parent, current.to);
+
+            if (x == y) {
+                continue;
+            }
+
+            e++;
+            union(parent, current.from, current.to);
+            tree.addEdge(current.from, current.to, current.weight);
+        }
 
         return tree;
     }
