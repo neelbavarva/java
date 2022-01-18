@@ -165,6 +165,7 @@ public class Graph {
         }
     }
 
+    // Dijkstra's Algorithm
     public int getShortestDistance(int from, int to) {
 
         Map<Integer, Integer> distances = new HashMap<>();
@@ -214,6 +215,7 @@ public class Graph {
         }
     }
 
+    // Dijkstra's Algorithm
     public void getShortestPath(int from, int to) {
 
         Map<Integer, Path> distances = new HashMap<>();
@@ -266,13 +268,16 @@ public class Graph {
         String input = sc.nextLine();
 
         if (input.toUpperCase().equals("P")) {
-            return primesAlgorithm();
-        } else {
+            return primsAlgorithm();
+        } else if (input.toUpperCase().equals("K")) {
             return krushkalsAlgorithm();
+        } else {
+            throw new IllegalArgumentException("Press P to for Prim's Algorithm OR Press K for Krushkal's Algorithm");
         }
     }
 
-    private Graph primesAlgorithm() {
+    // Prim's Algorithm
+    private Graph primsAlgorithm() {
         Graph tree = new Graph();
 
         PriorityQueue<Edge> queue = new PriorityQueue<>(Comparator.comparingInt(e -> e.weight));
@@ -282,7 +287,6 @@ public class Graph {
         while (!queue.isEmpty() && tree.nodes.size() <= nodes.size()) {
 
             Edge minEdge = queue.remove();
-            System.out.println(minEdge.from + " " + minEdge.to);
             int nextNode = minEdge.to;
 
             if (tree.nodes.contains(nextNode)) {
@@ -316,6 +320,7 @@ public class Graph {
         parent[x] = y;
     }
 
+    // Krushkal's Algorithm
     private Graph krushkalsAlgorithm() {
         Graph tree = new Graph();
         int parent[] = new int[maxNode + 1];
@@ -351,6 +356,45 @@ public class Graph {
         }
 
         return tree;
+    }
+
+    // Bellman-Ford's Algorithm
+    public void printAllShortestDistance(int source) {
+        System.out.println("Bellman-Ford Algorithm");
+        System.out.println("Source to all other Nodes, in -ve weighted Graph");
+
+        Map<Integer, Integer> distances = new HashMap<>();
+
+        for (int i = 0; i < nodes.size(); i++) {
+            distances.putIfAbsent(nodes.get(i), Integer.MAX_VALUE);
+        }
+
+        distances.replace(source, 0);
+
+        for (int i = 0; i < nodes.size(); i++) {
+            for (int j = 0; j < edgeList.size(); j++) {
+                int newDistance = distances.get(edgeList.get(j).from) + edgeList.get(j).weight;
+                if (distances.get(edgeList.get(j).from) != Integer.MAX_VALUE
+                        && newDistance < distances.get(edgeList.get(j).to)) {
+                    distances.replace(edgeList.get(j).to, newDistance);
+                }
+            }
+        }
+
+        for (int i = 0; i < edgeList.size(); i++) {
+            int newDistance = distances.get(edgeList.get(i).from) + edgeList.get(i).weight;
+
+            if (distances.get(edgeList.get(i).from) != Integer.MAX_VALUE
+                    && newDistance < distances.get(edgeList.get(i).to)) {
+                System.out.println("Graph contains negative weight cycle");
+                return;
+            }
+        }
+
+        for (var edge : distances.entrySet()) {
+            System.out.println(edge.getKey() + "  " + edge.getValue());
+        }
+
     }
 
 }
